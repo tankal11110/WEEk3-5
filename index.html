@@ -2,19 +2,37 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title> Wrapper Toggler dla elementów z drzewa DOM </title>
+	<title>File API</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="bootstrap\css\bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap\css\bootstrap-theme.min.css">
 </head>
 <body>
-	<h1>5.  Wrapper Toggler dla elementów z drzewa DOM </h1>
-	
-	<button id="button">Change</button>
-	
-	<div id="section">
-		<span>Some text</span>
-		<p>Some text Some text Some text Some text Some text Some text Some text</p>
+
+   	<div class="form-group row">
+   		<div class="col-xs-6" >
+       		<h2 for="exampleInputEmail1">Choose File</h2>
+       		<input type="file" class="form-control" id="fileInput" name="fileInput">
+       </div>
+   	</div>
+
+
+	<div class="file_opening row">
+
+		<div class="col-xs-6">
+			<h2>Your HTML file</h2>
+			<div id="file__html">
+			
+			</div>
+
+			<button class="btn btn-success" id="btn_copy">Copy</button>
+		</div>
+		<div class="col-xs-6" id="text_copy">
+
+		</div>
 	</div>
-	
+
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script  src="main.js"></script>
+	<script src="showdown.js"></script>
 </body>

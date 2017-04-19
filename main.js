@@ -1,38 +1,56 @@
-function Toggler(selector){
-	this._object = document.querySelector(selector);
-	this._object.style.display = "none";
-};
+(function(){
+	if(!window.FileReader) return;
 
-Toggler.prototype.getElem = function(){
-	return this._object;
-}
+	var fileInput = document.querySelector("#fileInput"),
+		fileArea = document.querySelector("#file__html"),
+		copyArea = document.querySelector("#text_copy"),
+		btn = document.querySelector("#btn_copy");
 
-Toggler.prototype.show = function(){
 	
-	if (this._object.style.display === "none"){
+	function copyHTML(){
+		var textarea = document.createElement("textarea");
+
+		textarea.innerHTML = fileArea.innerHTML;
+		textarea.className = "textarea"; 
+
+		copyArea.appendChild(textarea);
+		copyArea.style.display = "block";
+
+		textarea.select();
+
+	}
+
+	function newHTML(someFile) {
+
+        var converter = new showdown.Converter({
+            noHeaderId: true
+        });
+
+        return converter.makeHtml(someFile);
+
+    };
+
+	function createHTML(someFile){
+		var html = newHTML(someFile);
 		
-		return this._object.style.display = "block";
+		fileArea.innerHTML = html;
+
+		btn.style.display = "block";
+		btn.onclick = copyHTML;
+		
 	}
-	return;
-}
 
+	fileInput.addEventListener('change', function(e){
 
-Toggler.prototype.hide = function(){
-	if (this._object.style.display = "block"){
-		return this._object.style.display = "none";
-	}
-	return;
-}
+		var file = e.target.files[0];
 
-var elem = new Toggler("#section");
-var button = document.querySelector("#button");
+		var reader = new FileReader();
 
-button.addEventListener("click", function() {
+		reader.onload = function(){
+			createHTML(this.result);
+		};
 
-    if(elem.getElem().style.display == "none") {
-        elem.show();
-    } else {
-        elem.hide();
-    }
+		reader.readAsText(file);
+	}, false);
 
-}, false);
+})();

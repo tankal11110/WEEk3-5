@@ -1,7 +1,28 @@
+body{
+	padding: 30px;
+}
 #section{
 	border:1px solid red;
 	width:100px;
 	border-radius:10px;
 	padding:0 5px 0 5px;
 
+}
+
+.fileArea, .file_opening{
+	border: 1px solid grey; 
+}
+
+#btn_copy{
+	display: none;
+}
+
+#text_copy{
+	display: none;
+}
+
+.textarea{
+	width: 100%;
+	height: 400px;
+	display: block;
 }
